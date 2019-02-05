@@ -6,7 +6,7 @@
 #======================
 
 PORT=8888
-SSH_PORT=4084
+SSH_PORT=22
 REMOTE_PORT=8889
 SSH_KEY_FILE="id_rsa"
 
