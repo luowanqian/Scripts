@@ -16,7 +16,7 @@ SSH_KEY_FILE="id_rsa"
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/${SSH_KEY_FILE} -C "localhost" -q
 
 # copy ssh public key to authorized_keys
-cat ~/.ssh/${SSH_KEY_FILE} >> ~/.ssh/authorized_keys
+cat ~/.ssh/${SSH_KEY_FILE}.pub >> ~/.ssh/authorized_keys
 
 # autossh
 autossh -M 0 -fCNL *:${REMOTE_PORT}:localhost:${PORT} -f ~/.ssh/${SSH_KEY_FILE} -p ${SSH_PORT} localhost
