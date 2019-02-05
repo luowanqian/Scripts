@@ -19,4 +19,4 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/${SSH_KEY_FILE} -C "localhost" -q
 cat ~/.ssh/${SSH_KEY_FILE}.pub >> ~/.ssh/authorized_keys
 
 # autossh
-autossh -M 0 -fCNL *:${REMOTE_PORT}:localhost:${PORT} -f ~/.ssh/${SSH_KEY_FILE} -p ${SSH_PORT} localhost
+autossh -M 0 -fCNL *:${REMOTE_PORT}:localhost:${PORT} -i ~/.ssh/${SSH_KEY_FILE} -p ${SSH_PORT} localhost
