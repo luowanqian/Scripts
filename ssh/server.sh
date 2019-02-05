@@ -15,10 +15,10 @@ REMOTE_PORT=8888
 #=============================
 
 # generate ssh key file
-ssh-keygen -t rsa -b 4096 -f ${SSH_KEY_FILE} -q
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/${SSH_KEY_FILE} -q
 
 # copy ssh key file to remote server
 ssh-copy-id -p ${REMOTE_SSH_PORT} -i ~/.ssh/${SSH_KEY_FILE} ${REMOTE_USER}@${REMOTE_IP}
 
 # autossh
-autossh -M 0 -fCNR ${REMOTE_PORT}:localhost:${SSH_PORT} -p ${REMOTE_SSH_PORT} ${REMOTE_USER}@${REMOTE_IP}
+autossh -M 0 -fCNR ${REMOTE_PORT}:localhost:${SSH_PORT} -p ${REMOTE_SSH_PORT} -i ~/.ssh/${SSH_KEY_FILE} ${REMOTE_USER}@${REMOTE_IP}
