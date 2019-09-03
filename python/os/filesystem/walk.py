@@ -1,11 +1,9 @@
 # -*- coding: UTF-8 -*-
-
 """
 遍历目录，输出目录下所有子目录以及文件
 """
 
 import os
-
 
 if __name__ == '__main__':
     root_dir = '/tmp/test'

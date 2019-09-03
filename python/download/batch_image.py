@@ -35,8 +35,8 @@ if __name__ == '__main__':
             image_paths.append(file_path)
 
         tasks = {
-            executor.submit(download, url, file_path):
-                           (url, file_path) for url, file_path in zip(image_urls, image_paths)
+            executor.submit(download, url, file_path): (url, file_path)
+            for url, file_path in zip(image_urls, image_paths)
         }
 
         i = 0
