@@ -5,6 +5,8 @@
 - [1. Collection](#1-collection)
   - [1.1. 迭代器](#11-迭代器)
   - [1.2. 索引](#12-索引)
+  - [1.3. 工具函数](#13-工具函数)
+    - [1.3.1. 判断对象是否可迭代](#131-判断对象是否可迭代)
 
 ## 1.1. 迭代器
 
@@ -52,4 +54,24 @@ output:
 ```
 Original key: (slice(1, 3, None), 2)
 Normalized key: (slice(1, 3, 1), 2)
+```
+
+## 1.3. 工具函数
+
+集合相关工具函数，见 [utils.py](./utils.py)
+
+### 1.3.1. 判断对象是否可迭代
+
+使用函数 `isiterable()` 进行判断，如果对象可迭代，则返回 `True`，否则返回 `False`
+
+Example:
+
+```python
+from utils import isiterable
+
+
+a = [1, 2]
+b = 3
+print(f"'a' is {'iterable' if isiterable(a) else 'not iterable'}")
+print(f"'b' is {'iterable' if isiterable(b) else 'not iterable'}")
 ```
