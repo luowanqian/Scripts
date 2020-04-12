@@ -1,4 +1,5 @@
 import logging
+import sys
 
 
 class Log:
@@ -14,16 +15,19 @@ class Log:
         log_level = self._log_levels.get(level, logging.INFO)
         logger = logging.getLogger(logger_name)
         logger.setLevel(level=log_level)
-        handler = logging.StreamHandler()
-        formatter = logging.Formatter(
-            '%(asctime)s - %(name)s - %(levelname)s - %(lineno)d - %(message)s'
-        )
-        handler.setFormatter(formatter)
-        logger.addHandler(handler)
+        log_format = "%(asctime)s - %(name)s - " \
+            + "%(levelname)s - %(lineno)d - %(message)s"
+        formatter = logging.Formatter(log_format)
+        handler = None
+        if not logger.handlers:
+            # 一个logger只能有一个控制台输出, 否则多次实例化会导致重复输出
+            handler = logging.StreamHandler(sys.stdout)
+            handler.setFormatter(formatter)
+            logger.addHandler(handler)
 
         self._logger = logger
         self._logger_name = logger_name
-        self._handlers = {"console": handler}
+        self._handlers = {}
         self._formatter = formatter
 
         self.import_log_funcs()
@@ -47,6 +51,8 @@ class Log:
 
 if __name__ == '__main__':
     log = Log('simple_log', level="debug")
+    log2 = Log('simple_log', level="debug")
+
     log.add_file_output("foo.txt", mode="w")
     log.info('This is a log info')
     log.debug('Debugging')
