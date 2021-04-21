@@ -44,7 +44,7 @@
 | ---- | ---- |
 | 遍历目录 | 遍历目录下所有文件 |
 | Reader Factory | 使用Factory Pattern实现生成各类Reader (Excel, CSV, etc.) |
-| Timer | 使用装饰器对函数执行计时 ｜
+| Timer | 使用装饰器对函数执行计时 |
 | Platform | 判断操作系统类型 |
 
 ## 2. Shell
